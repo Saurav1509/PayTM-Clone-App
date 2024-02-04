@@ -19,3 +19,13 @@ export const passwordAtom = atom({
   key: "passwordAtom",
   default: ''
 })
+
+export const usersAtom = atom({
+  key: "usersAtom",
+  default: []
+})
+
+export const filterAtom = atom({
+  key: "filterAtom",
+  default: ""
+})
