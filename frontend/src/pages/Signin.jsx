@@ -12,7 +12,6 @@ function Signin() {
 
   const [username, setUsername] = useRecoilState(usernameAtom)
   const [password, setPassword] = useRecoilState(passwordAtom)
-  const [firstName, setFirstName] = useRecoilState(firstNameAtom)
 
   const navigate = useNavigate()
 

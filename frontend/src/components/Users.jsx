@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import axios from "axios"
 import { useRecoilState } from "recoil";
 import { Button } from "./Button";
+import { useNavigate } from "react-router-dom";
 
 export function Users({ label, onClick }) {
   const [users, setUsers] = useRecoilState(usersAtom);
@@ -34,6 +35,8 @@ export function Users({ label, onClick }) {
 
 
 function User({ user }) {
+  const navigate = useNavigate();
+
   return <div className="flex justify-between pt-1 px-4 pb-4">
     <div className="flex">
       <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
@@ -50,6 +53,7 @@ function User({ user }) {
     <div className="flex flex-col justify-center h-ful">
       <Button onClick={(e) => {
         console.log("Send money button was Clicked")
+        navigate("/send?id=" + user._id + "&name=" + user.firstName)
       }} label={"Send Money"} />
     </div>
   </div>
