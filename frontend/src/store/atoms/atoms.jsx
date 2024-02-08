@@ -29,3 +29,8 @@ export const filterAtom = atom({
   key: "filterAtom",
   default: ""
 })
+
+export const amountAtom = atom({
+  key: "amountAtom",
+  default: 0
+})
