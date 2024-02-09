@@ -5,7 +5,7 @@ import { Users } from "../components/Users";
 function Dashboard() {
   return <div>
     <Appbar label={"PayTM App"} firstName={localStorage.getItem("firstName")} />
-    <Balance balance={"10,000"} />
+    <Balance />
     <Users label={"Search for Users to send money"} />
   </div>
 }

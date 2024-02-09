@@ -1,11 +1,11 @@
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { amountAtom } from '../store/atoms/atoms';
 import axios from 'axios';
 
 function SendMoney() {
   const [searchParams] = useSearchParams();
-
+  const navigate = useNavigate()
   const id = searchParams.get("id");
   const name = searchParams.get("name");
   const [amount, setAmount] = useRecoilState(amountAtom)
@@ -31,8 +31,8 @@ function SendMoney() {
             className='border h-10 w-full border-input bg-background px-3 py-2 text-sm'
             type='number'
             placeholder='Enter Amount' />
-          <button onClick={() => {
-            axios.post("http://localhost:3000/api/v1/account/transfer", {
+          <button onClick={async () => {
+            const reponse = await axios.post("http://localhost:3000/api/v1/account/transfer", {
               to: id,
               amount
             }, {
@@ -40,8 +40,9 @@ function SendMoney() {
                 Authorization: "Bearer " + localStorage.getItem("token")
               }
             })
+            navigate("/dashboard")
           }}
-            className='justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-9 px-4 py-2 w-full bg-green-500 text-white my-2'>Send</button>
+            className='transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-103 hover:bg-lime-500 duration-300 rounded-lg p-2 w-full my-2'>Send</button>
         </div>
       </div>
     </div>

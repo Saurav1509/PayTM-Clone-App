@@ -34,3 +34,8 @@ export const amountAtom = atom({
   key: "amountAtom",
   default: 0
 })
+
+export const balanceAtom = atom({
+  key: "balanceAtom",
+  default: 0
+})
